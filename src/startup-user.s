@@ -113,6 +113,9 @@ _Gavin_initialize:
 #endif // __CALYPSI_TARGET_SYSTEM_FOENIX__
 
               .section libcode, root, noreorder
-	      movem.l (4,sp),d0/a0
+	      ; movem.l (4,sp),d0/a0
+          moveq.l #0,d0         ; argc = 0
+          move.w  (sp)+,d0      ; pop argc to d0
+          move.l  (sp)+,a0      ; pop argv to a0
 	      call    main
               jump    exit
